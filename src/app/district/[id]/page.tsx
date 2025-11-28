@@ -42,7 +42,7 @@ export default async function DistrictPage({ params }: PageProps) {
 
             <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
                 <h2 className="text-lg font-semibold mb-4 text-gray-900">
-                    สถิติการปฏิบัติงานรายวัน (11 - 17 เมษายน 2568)
+                    สถิติการปฏิบัติงานรายวัน (29 ธันวาคม 2568 - 4 มกราคม 2569)
                 </h2>
                 <DailyTable stats={district.stats} />
             </div>
