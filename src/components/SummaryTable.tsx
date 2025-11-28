@@ -9,7 +9,7 @@ interface SummaryTableProps {
 export function SummaryTable({ districts }: SummaryTableProps) {
     // Calculate totals for each district
     const districtTotals = districts.map((district) => {
-        const totalStaff = district.stats.reduce((acc, curr) => acc + curr.staffCount, 0);
+        const totalStaff = Math.round(district.stats.reduce((acc, curr) => acc + curr.staffCount, 0) / (district.stats.length || 1));
         const totalService = district.stats.reduce((acc, curr) => acc + curr.serviceUsers, 0);
         const totalRestroom = district.stats.reduce((acc, curr) => acc + curr.restroomUsers, 0);
         const totalAssistance = district.stats.reduce((acc, curr) => acc + curr.assistanceCount, 0);
@@ -51,7 +51,7 @@ export function SummaryTable({ districts }: SummaryTableProps) {
                             หน่วยงาน
                         </th>
                         <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            เจ้าหน้าที่ (คน)
+                            เจ้าหน้าที่ (เฉลี่ย/วัน)
                         </th>
                         <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                             ผู้ใช้บริการ (ราย)

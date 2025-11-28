@@ -18,6 +18,9 @@ export function DailyTable({ stats }: DailyTableProps) {
         { staffCount: 0, serviceUsers: 0, restroomUsers: 0, assistanceCount: 0, accidentCount: 0, fatalityCount: 0 }
     );
 
+    // Use average for staff count in totals
+    const averageStaff = Math.round(totals.staffCount / (stats.length || 1));
+
     return (
         <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -27,7 +30,7 @@ export function DailyTable({ stats }: DailyTableProps) {
                             วันที่
                         </th>
                         <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            เจ้าหน้าที่ (คน)
+                            เจ้าหน้าที่ (เฉลี่ย/วัน)
                         </th>
                         <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                             ผู้ใช้บริการ (ราย)
@@ -82,7 +85,7 @@ export function DailyTable({ stats }: DailyTableProps) {
                             รวม
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900 dark:text-blue-100 text-right">
-                            {totals.staffCount.toLocaleString()}
+                            {averageStaff.toLocaleString()}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900 dark:text-blue-100 text-right">
                             {totals.serviceUsers.toLocaleString()}
